@@ -18,6 +18,47 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var heroImages = document.querySelectorAll('.hero-media img');
+  if (heroImages.length > 1) {
+    var captionEl = document.querySelector('.hero-caption-text');
+    var dots = document.querySelectorAll('.hero-dot');
+    var current = 0;
+    var timer = null;
+
+    var show = function (index) {
+      heroImages[current].classList.remove('is-active');
+      if (dots[current]) dots[current].classList.remove('is-active');
+      current = (index + heroImages.length) % heroImages.length;
+      heroImages[current].classList.add('is-active');
+      if (dots[current]) dots[current].classList.add('is-active');
+      if (captionEl) {
+        captionEl.classList.remove('is-active');
+        setTimeout(function () {
+          captionEl.textContent = heroImages[current].dataset.caption || '';
+          captionEl.classList.add('is-active');
+        }, 300);
+      }
+    };
+
+    var startCycle = function () {
+      if (reduceMotion) return;
+      timer = setInterval(function () { show(current + 1); }, 6000);
+    };
+    var stopCycle = function () {
+      if (timer) { clearInterval(timer); timer = null; }
+    };
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        stopCycle();
+        show(parseInt(dot.dataset.index, 10));
+        startCycle();
+      });
+    });
+
+    startCycle();
+  }
   var revealTargets = document.querySelectorAll('.section, .deal-card');
   if (!reduceMotion && revealTargets.length && 'IntersectionObserver' in window) {
     revealTargets.forEach(function (el) { el.classList.add('reveal'); });
