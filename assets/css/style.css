@@ -575,6 +575,143 @@ h1, .thesis-statement {
 .deal-list-item:last-child { border-bottom: none; }
 .deal-list-item:hover .deal-title { color: var(--accent); }
 
+/* ---------- Track record grid ---------- */
+.track-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 28px;
+}
+.track-card {
+  display: block;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+.track-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border-radius: 2px;
+  filter: saturate(1.02);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.track-card:hover .track-card-img { transform: scale(1.02); }
+.track-card-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  transition: color 0.2s ease;
+}
+.track-card-arrow {
+  font-size: 14px;
+  color: var(--accent);
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.track-card:hover .track-card-name { color: var(--accent); }
+.track-card:hover .track-card-arrow { opacity: 1; transform: translate(0, 0); }
+.track-card-loc {
+  font-size: 13px;
+  color: var(--ink-dim);
+  margin-bottom: 14px;
+}
+.track-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  font-size: 13px;
+}
+.track-card-units { color: var(--ink); font-family: var(--font-mono); }
+.track-card-stat { color: var(--accent); font-family: var(--font-mono); }
+.track-card-status {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-top: 4px;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .track-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+}
+@media (max-width: 640px) {
+  .track-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- About photo ---------- */
+.about-photo {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 2px;
+  filter: saturate(1.02);
+}
+
+/* ---------- Deal detail modal ---------- */
+.deal-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 20px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.deal-modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+.deal-modal {
+  background: var(--bg);
+  max-width: 760px;
+  width: 100%;
+  padding: 48px 40px 56px;
+  position: relative;
+  transform: translateY(16px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35);
+}
+.deal-modal-overlay.is-open .deal-modal { transform: translateY(0); }
+.deal-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--ink-dim);
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.2s ease;
+}
+.deal-modal-close:hover { color: var(--ink); }
+.deal-modal-body .deal-card { padding: 0; }
+
+@media (max-width: 640px) {
+  .deal-modal-overlay { padding: 0; }
+  .deal-modal { max-width: none; min-height: 100vh; padding: 56px 22px 48px; }
+}
+
 /* ---------- Thesis pillars ---------- */
 .pillars {
   display: grid;
