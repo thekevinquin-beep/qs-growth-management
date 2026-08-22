@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
           captionEl.textContent = heroImages[current].dataset.caption || '';
           captionEl.classList.add('is-active');
-        }, 300);
+        }, 180);
       }
     };
 
     var startCycle = function () {
       if (reduceMotion) return;
-      timer = setInterval(function () { show(current + 1); }, 6000);
+      timer = setInterval(function () { show(current + 1); }, 3500);
     };
     var stopCycle = function () {
       if (timer) { clearInterval(timer); timer = null; }
