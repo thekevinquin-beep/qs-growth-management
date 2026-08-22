@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
       var source = document.querySelector('#deal-details .deal-card[data-deal="' + dealKey + '"]');
       if (!source) return;
       modalBody.innerHTML = source.outerHTML;
+      var clone = modalBody.querySelector('.deal-card');
+      if (clone) clone.classList.remove('reveal', 'is-visible');
       lastFocused = document.activeElement;
       overlay.classList.add('is-open');
       document.body.style.overflow = 'hidden';
@@ -97,7 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startCycle();
   }
-  var revealTargets = document.querySelectorAll('.section, .deal-card');
+  var revealTargets = [].slice.call(document.querySelectorAll('.section, .deal-card')).filter(function (el) {
+    return !el.closest('#deal-details');
+  });
   if (!reduceMotion && revealTargets.length && 'IntersectionObserver' in window) {
     revealTargets.forEach(function (el) { el.classList.add('reveal'); });
     var observer = new IntersectionObserver(function (entries) {
