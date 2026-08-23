@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var countTargets = [].slice.call(document.querySelectorAll(
-    '.deal-cell-val, .proof-num, .track-card-units'
+    '.deal-cell-val, .proof-num, .track-card-units, .track-card-stat'
   )).filter(function (el) {
     return !el.closest('#deal-details') && /\d/.test(el.textContent);
   });
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (reduceMotion) return;
 
-      var duration = 900;
+      var duration = 1700;
       var startTime = null;
       var format = function (val) {
         var str = val.toFixed(decimals);
