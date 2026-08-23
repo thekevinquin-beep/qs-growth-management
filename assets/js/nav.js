@@ -62,8 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var revealTargets = [].slice.call(document.querySelectorAll('.section, .deal-card')).filter(function (el) {
     return !el.closest('#deal-details');
   });
-  if (!reduceMotion && revealTargets.length && 'IntersectionObserver' in window) {
-    revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+  var headingTargets = [].slice.call(document.querySelectorAll(
+    'h1, h2, .section-title, .property-hero-title, .hero-sub, .property-hero-loc, .property-back'
+  )).filter(function (el) {
+    return !el.closest('#deal-details');
+  });
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -72,6 +77,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    revealTargets.forEach(function (el) { observer.observe(el); });
+
+    revealTargets.forEach(function (el) {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+    headingTargets.forEach(function (el) {
+      var isHeading = el.tagName === 'H1' || el.tagName === 'H2' || el.classList.contains('section-title') || el.classList.contains('property-hero-title');
+      el.classList.add(isHeading ? 'reveal-heading' : 'reveal');
+      observer.observe(el);
+    });
   }
 });

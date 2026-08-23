@@ -56,8 +56,16 @@ body::before {
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.reveal-heading {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-heading.is-visible { opacity: 1; transform: translateX(0); }
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, .reveal-heading { opacity: 1; transform: none; transition: none; }
 }
 
 img { max-width: 100%; display: block; }
@@ -704,20 +712,20 @@ h1, .thesis-statement {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   z-index: 2;
-  padding: 40px 24px;
-  max-width: var(--max-width);
+  padding: 48px 24px 56px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 .property-back {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   color: rgba(255,255,255,0.85);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   transition: color 0.2s ease;
 }
 .property-back:hover { color: #fff; }
@@ -725,19 +733,22 @@ h1, .thesis-statement {
   font-family: var(--font-display);
   font-weight: 500;
   font-style: normal;
-  font-size: clamp(30px, 5vw, 46px);
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
   text-wrap: balance;
 }
 .property-hero-loc {
-  font-size: 14px;
+  font-size: 15px;
   color: rgba(255,255,255,0.85);
 }
 
 @media (max-width: 640px) {
   .property-hero { aspect-ratio: 3 / 4; }
-  .property-hero-content { padding: 28px 24px; }
+  .property-hero-content { padding: 28px 24px 36px; }
+  .property-hero-title { font-size: clamp(34px, 11vw, 48px); }
 }
 
 /* ---------- Thesis pillars ---------- */
