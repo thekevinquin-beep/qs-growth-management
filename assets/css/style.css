@@ -378,14 +378,19 @@ h1, .thesis-statement {
     position: relative;
     inset: auto;
     left: 0;
-    height: 260px;
+    height: 300px;
     -webkit-mask-image: none;
     mask-image: none;
     order: -1;
   }
-  .hero-media::after { background: linear-gradient(180deg, transparent 55%, var(--bg) 100%); }
-  .hero-content { max-width: none; padding: 40px 24px 48px; }
+  .hero-media::after { background: linear-gradient(180deg, transparent 35%, var(--bg) 96%); }
+  .hero-content {
+    max-width: none;
+    padding: 16px 24px 32px;
+    margin-top: -90px;
+  }
   .hero-content h1 { font-size: clamp(34px, 9vw, 46px); }
+  .hero-content .hero-sub { margin-bottom: 24px; }
 }
 
 /* ---------- Proof points (full-width stat bar) ---------- */
@@ -459,6 +464,7 @@ h1, .thesis-statement {
 
 @media (max-width: 640px) {
   .section { padding: 72px 24px; }
+  .section-proof { padding-bottom: 40px; }
 }
 .section-body p { margin-bottom: 16px; }
 .section-body p:last-child { margin-bottom: 0; }
