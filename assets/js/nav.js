@@ -19,46 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var overlay = document.getElementById('deal-modal-overlay');
-  var trackCards = document.querySelectorAll('.track-card');
-  if (overlay && trackCards.length) {
-    var modalBody = document.getElementById('deal-modal-body');
-    var closeBtn = document.getElementById('deal-modal-close');
-    var lastFocused = null;
-
-    var openModal = function (dealKey) {
-      var source = document.querySelector('#deal-details .deal-card[data-deal="' + dealKey + '"]');
-      if (!source) return;
-      modalBody.innerHTML = source.outerHTML;
-      var clone = modalBody.querySelector('.deal-card');
-      if (clone) clone.classList.remove('reveal', 'is-visible');
-      lastFocused = document.activeElement;
-      overlay.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    };
-
-    var closeModal = function () {
-      overlay.classList.remove('is-open');
-      document.body.style.overflow = '';
-      if (lastFocused) lastFocused.focus();
-    };
-
-    trackCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        openModal(card.dataset.deal);
-      });
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', function (e) {
-      if (e.target === overlay) closeModal();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
-    });
-  }
-
   var heroImages = document.querySelectorAll('.hero-media img');
   if (heroImages.length > 1) {
     var captionEl = document.querySelector('.hero-caption-text');

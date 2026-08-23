@@ -44,7 +44,7 @@
 <section class="section" style="border-top:2px solid var(--rule-strong);">
   <div class="track-grid">
 
-    <button class="track-card" data-deal="westlynn" type="button">
+    <a class="track-card" href="westlynn.html">
       <img class="track-card-img" src="assets/images/deals/westlynn.jpg" alt="">
       <div class="track-card-body">
         <div class="track-card-name">Westlynn <span class="track-card-arrow">↗</span></div>
@@ -55,9 +55,9 @@
         </div>
         <div class="track-card-status">Refinancing</div>
       </div>
-    </button>
+    </a>
 
-    <button class="track-card" data-deal="dakota" type="button">
+    <a class="track-card" href="dakota.html">
       <img class="track-card-img" src="assets/images/deals/dakota.jpg" alt="">
       <div class="track-card-body">
         <div class="track-card-name">Dakota <span class="track-card-arrow">↗</span></div>
@@ -68,9 +68,9 @@
         </div>
         <div class="track-card-status">Refinancing</div>
       </div>
-    </button>
+    </a>
 
-    <button class="track-card" data-deal="mountroyal" type="button">
+    <a class="track-card" href="mountroyal.html">
       <img class="track-card-img" src="assets/images/deals/mountroyal.jpg" alt="">
       <div class="track-card-body">
         <div class="track-card-name">Mount Royal Apartments <span class="track-card-arrow">↗</span></div>
@@ -81,87 +81,10 @@
         </div>
         <div class="track-card-status">Stabilized — Refinanced</div>
       </div>
-    </button>
+    </a>
 
   </div>
 </section>
-
-<div class="deal-modal-overlay" id="deal-modal-overlay">
-  <div class="deal-modal" role="dialog" aria-modal="true" aria-label="Deal detail">
-    <button class="deal-modal-close" id="deal-modal-close" aria-label="Close">&times;</button>
-    <div class="deal-modal-body" id="deal-modal-body"></div>
-  </div>
-</div>
-
-<div id="deal-details" hidden>
-
-  <div class="deal-card" data-deal="westlynn">
-    <div class="deal-eyebrow">Deal 01</div>
-    <h2 class="deal-title">Westlynn</h2>
-    <div class="deal-loc">Edmonton, AB — 21 units</div>
-    <div class="deal-role">Role: Equity Partner &amp; Asset Manager</div>
-    <img class="deal-photo" src="assets/images/deals/westlynn.jpg" alt="Aerial view of Westlynn, a 21-unit multifamily property in Edmonton, Alberta">
-    <div class="deal-grid">
-      <div class="deal-cell"><div class="deal-cell-label">Units</div><div class="deal-cell-val">21</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Value Added</div><div class="deal-cell-val">~$1.0M</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Managed Since</div><div class="deal-cell-val">Jul 2025</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Status</div><div class="deal-cell-val">Stabilized — Refinancing</div></div>
-    </div>
-    <div class="deal-body">
-      <p>[PLACEHOLDER — what was done operationally at Westlynn to drive the ~$1M in added value: value-add scope, repositioning, management changes.]</p>
-      <p>Fully occupied and cash-flowing as of [PLACEHOLDER: reporting date].</p>
-    </div>
-    <div class="fieldnote">
-      <div class="fieldnote-label">Field Note</div>
-      <div class="fieldnote-text">[PLACEHOLDER — a short, specific, honest operator's note on Westlynn.]</div>
-    </div>
-  </div>
-
-  <div class="deal-card" data-deal="dakota">
-    <div class="deal-eyebrow">Deal 02</div>
-    <h2 class="deal-title">Dakota</h2>
-    <div class="deal-loc">Edmonton, AB — 20 units</div>
-    <div class="deal-role">Role: Asset Manager</div>
-    <img class="deal-photo" src="assets/images/deals/dakota.jpg" alt="Aerial view of Dakota, a 20-unit multifamily property in Edmonton, Alberta">
-    <div class="deal-grid">
-      <div class="deal-cell"><div class="deal-cell-label">Units</div><div class="deal-cell-val">20</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Owner</div><div class="deal-cell-val">Third-party</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Managed Since</div><div class="deal-cell-val">Jul 2025</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Status</div><div class="deal-cell-val">Stabilized — Refinancing</div></div>
-    </div>
-    <div class="deal-body">
-      <p>[PLACEHOLDER — scope of asset-management responsibility at Dakota: what changed operationally under management. No equity/ownership language — this deal is management-only.]</p>
-      <p>Acquired for $2.2M and currently in the process of refinancing. Cash-flowing and stable under management; updated figures will be posted once the refinance closes.</p>
-    </div>
-    <div class="fieldnote">
-      <div class="fieldnote-label">Field Note</div>
-      <div class="fieldnote-text">[PLACEHOLDER — a short, specific, honest operator's note on Dakota.]</div>
-    </div>
-  </div>
-
-  <div class="deal-card" data-deal="mountroyal">
-    <div class="deal-eyebrow">Deal 03</div>
-    <h2 class="deal-title">Mount Royal Apartments</h2>
-    <div class="deal-loc">Saskatoon, SK — 18 units</div>
-    <div class="deal-role">Role: Equity Partner</div>
-    <img class="deal-photo" src="assets/images/deals/mountroyal.jpg" alt="Aerial view of Mount Royal Apartments, an 18-unit multifamily property in Saskatoon, Saskatchewan">
-    <div class="deal-grid">
-      <div class="deal-cell"><div class="deal-cell-label">Units</div><div class="deal-cell-val">18</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Value Added</div><div class="deal-cell-val">~$600K</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Acquired</div><div class="deal-cell-val">Mar 2025</div></div>
-      <div class="deal-cell"><div class="deal-cell-label">Status</div><div class="deal-cell-val">Stabilized — Refinanced</div></div>
-    </div>
-    <div class="deal-body">
-      <p>Acquired in March 2025 as an equity partner. The property had a history of crime and problem tenants; under new ownership it was repositioned into a stable, family-oriented building.</p>
-      <p>Delivered a 30% return to investors upon refinancing, with approximately $600K in added value within the first year of ownership. Kevin holds an equity position; day-to-day asset management is handled by the operating partner.</p>
-    </div>
-    <div class="fieldnote">
-      <div class="fieldnote-label">Field Note</div>
-      <div class="fieldnote-text">[PLACEHOLDER — a short, specific, honest note on Mount Royal: what the turnaround actually looked like on the ground.]</div>
-    </div>
-  </div>
-
-</div>
 
 <footer class="site-footer">
   <div class="footer-row">

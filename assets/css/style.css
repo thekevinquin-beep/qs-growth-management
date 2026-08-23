@@ -590,6 +590,7 @@ h1, .thesis-statement {
   font-family: inherit;
   cursor: pointer;
   color: inherit;
+  text-decoration: none;
 }
 .track-card-img {
   width: 100%;
@@ -678,53 +679,65 @@ h1, .thesis-statement {
   .about-intro-media { position: static; max-width: 220px; }
 }
 
-/* ---------- Deal detail modal ---------- */
-.deal-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: color-mix(in srgb, var(--ink) 55%, transparent);
-  backdrop-filter: blur(3px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 48px 20px;
-  overflow-y: auto;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.deal-modal-overlay.is-open { opacity: 1; pointer-events: auto; }
-.deal-modal {
-  background: var(--bg);
-  max-width: 760px;
-  width: 100%;
-  padding: 48px 40px 56px;
+/* ---------- Property detail page ---------- */
+.property-hero {
   position: relative;
-  transform: translateY(16px);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35);
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  max-height: 620px;
+  overflow: hidden;
 }
-.deal-modal-overlay.is-open .deal-modal { transform: translateY(0); }
-.deal-modal-close {
+.property-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.03);
+}
+.property-hero::after {
+  content: "";
   position: absolute;
-  top: 16px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  line-height: 1;
-  color: var(--ink-dim);
-  cursor: pointer;
-  padding: 8px;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,26,26,0) 45%, rgba(20,26,26,0.78) 100%);
+}
+.property-hero-content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  padding: 40px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.property-back {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
   transition: color 0.2s ease;
 }
-.deal-modal-close:hover { color: var(--ink); }
-.deal-modal-body .deal-card { padding: 0; }
+.property-back:hover { color: #fff; }
+.property-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(30px, 5vw, 46px);
+  color: #fff;
+  margin-bottom: 8px;
+  text-wrap: balance;
+}
+.property-hero-loc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
 
 @media (max-width: 640px) {
-  .deal-modal-overlay { padding: 0; }
-  .deal-modal { max-width: none; min-height: 100vh; padding: 56px 22px 48px; }
+  .property-hero { aspect-ratio: 3 / 4; }
+  .property-hero-content { padding: 28px 24px; }
 }
 
 /* ---------- Thesis pillars ---------- */
