@@ -337,7 +337,7 @@ h1, .thesis-statement {
 .hero-dot.is-active { opacity: 0.9; transform: scale(1.25); }
 
 @media (max-width: 900px) {
-  .hero-caption { left: 16px; bottom: auto; top: 110px; }
+  .hero-caption { left: 16px; bottom: auto; top: 16px; }
 }
 .hero-media::after {
   content: "";
