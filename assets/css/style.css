@@ -388,40 +388,41 @@ h1, .thesis-statement {
   .hero-content h1 { font-size: clamp(34px, 9vw, 46px); }
 }
 
-/* ---------- Proof points (quiet caption, not stat bar) ---------- */
+/* ---------- Proof points (full-width stat bar) ---------- */
+.section-proof {
+  max-width: 1180px;
+}
 .proof {
-  display: flex;
-  gap: 0;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 32px;
   border-top: 1px solid var(--rule);
-  padding-top: 18px;
+  padding-top: 32px;
 }
 .proof-item {
-  padding-right: 24px;
-  margin-right: 24px;
+  padding-right: 32px;
   border-right: 1px solid var(--rule);
+  min-width: 0;
 }
-.proof-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+.proof-item:last-child { border-right: none; padding-right: 0; }
 .proof-num {
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: clamp(28px, 3.4vw, 42px);
   font-variant-numeric: tabular-nums;
   color: var(--ink);
 }
 .proof-cap {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--ink-dim);
   letter-spacing: 0.02em;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 @media (max-width: 640px) {
-  .proof { gap: 16px 0; }
+  .proof { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
   .proof-item {
-    flex: 1 1 45%;
     border-right: none;
     padding-right: 0;
-    margin-right: 0;
   }
 }
 
