@@ -652,15 +652,30 @@ h1, .thesis-statement {
   .track-grid { grid-template-columns: 1fr; }
 }
 
-/* ---------- About photo ---------- */
+/* ---------- About intro (photo + bio, side by side) ---------- */
+.about-intro {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: start;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+.about-intro-media { position: sticky; top: 100px; }
 .about-photo {
   width: 100%;
-  max-width: 340px;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: top center;
   border-radius: 2px;
   filter: saturate(1.02);
+}
+.about-intro-body .eyebrow { margin-top: 4px; }
+
+@media (max-width: 760px) {
+  .about-intro { grid-template-columns: 1fr; gap: 28px; padding: 40px 24px; }
+  .about-intro-media { position: static; max-width: 220px; }
 }
 
 /* ---------- Deal detail modal ---------- */
