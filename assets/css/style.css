@@ -863,6 +863,14 @@ h1, .thesis-statement {
 }
 .form-submit:hover { background: var(--accent); }
 .form-note { font-size: 12px; color: var(--ink-dim); margin-top: 14px; }
+.form-submit[disabled] { opacity: 0.6; cursor: default; }
+.form-status {
+  border: 1px solid var(--rule);
+  padding: 24px;
+  font-size: 15px;
+  color: var(--ink);
+}
+.form-status.is-error { border-color: #b3423a; color: #b3423a; }
 
 /* ---------- Footer ---------- */
 .site-footer {

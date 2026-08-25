@@ -42,7 +42,9 @@
 </header>
 
 <section class="section" style="border-top:2px solid var(--rule-strong);">
-  <form class="contact-form" action="#" method="POST">
+  <form class="contact-form" action="https://formspree.io/f/mnpaegnq" method="POST">
+    <input type="hidden" name="_subject" value="New investment inquiry — QS Growth Management site">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
     <div class="form-row">
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required>
@@ -62,7 +64,41 @@
     <button type="submit" class="form-submit">Submit Inquiry</button>
     <p class="form-note">Your information is kept confidential and used only to respond to your inquiry.</p>
   </form>
+  <div class="form-status" hidden></div>
 </section>
+
+<script>
+(function () {
+  var form = document.querySelector('.contact-form');
+  var status = document.querySelector('.form-status');
+  if (!form || !status) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var submitBtn = form.querySelector('.form-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (res.ok) {
+        form.hidden = true;
+        status.hidden = false;
+        status.textContent = "Thanks — your inquiry has been sent. Kevin will follow up directly.";
+      } else {
+        throw new Error('Submission failed');
+      }
+    }).catch(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Inquiry';
+      status.hidden = false;
+      status.classList.add('is-error');
+      status.textContent = "Something went wrong sending your message. Please email thekevinquin@gmail.com directly.";
+    });
+  });
+})();
+</script>
 
 <footer class="site-footer">
   <div class="footer-row">

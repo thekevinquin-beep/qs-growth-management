@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var headingTargets = [].slice.call(document.querySelectorAll(
     'h1, h2, .section-title, .property-hero-title, .hero-sub, .property-hero-loc, .property-back'
   )).filter(function (el) {
-    return !el.closest('#deal-details') && !el.closest('.hero-split');
+    return !el.closest('#deal-details') && !el.closest('header') && !el.closest('.property-hero');
   });
 
   if (!reduceMotion && 'IntersectionObserver' in window) {
