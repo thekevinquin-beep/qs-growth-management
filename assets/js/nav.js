@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        stopCycle();
+      } else if (captionEl) {
+        captionEl.classList.add('is-active');
+        startCycle();
+      }
+    });
+
     startCycle();
   }
   var revealTargets = [].slice.call(document.querySelectorAll('.section, .deal-card')).filter(function (el) {
@@ -65,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var headingTargets = [].slice.call(document.querySelectorAll(
     'h1, h2, .section-title, .property-hero-title, .hero-sub, .property-hero-loc, .property-back'
   )).filter(function (el) {
-    return !el.closest('#deal-details');
+    return !el.closest('#deal-details') && !el.closest('.hero-split');
   });
 
   if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -76,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
     revealTargets.forEach(function (el) {
       el.classList.add('reveal');
@@ -105,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var suffix = match[3];
       var target = parseFloat(numStr);
       if (isNaN(target)) return;
+      if (prefix.trim() && prefix.trim() !== '$') return;
       var hasCommas = match[2].indexOf(',') !== -1;
       var decimals = (numStr.split('.')[1] || '').length;
 
