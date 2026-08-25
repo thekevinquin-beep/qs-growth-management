@@ -72,11 +72,16 @@
   var form = document.querySelector('.contact-form');
   var status = document.querySelector('.form-status');
   if (!form || !status) return;
+  var SHEET_LOG_URL = 'https://script.google.com/macros/s/AKfycbyNdCX7isOYL25-EZB2tY06npCvX4Sz2L3K-bPcxA4xD8C9vUotLz6Mcj2YB109ZtnqGw/exec';
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var submitBtn = form.querySelector('.form-submit');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
+
+    // Best-effort lead log — doesn't block or affect the email flow below.
+    fetch(SHEET_LOG_URL, { method: 'POST', mode: 'no-cors', body: new FormData(form) }).catch(function () {});
+
     fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
