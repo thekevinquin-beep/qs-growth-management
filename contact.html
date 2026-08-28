@@ -42,40 +42,175 @@
 </header>
 
 <section class="section" style="border-top:2px solid var(--rule-strong);">
-  <form class="contact-form" action="https://formspree.io/f/mnpaegnq" method="POST">
+  <form class="typeform" id="contact-typeform" action="https://formspree.io/f/mnpaegnq" method="POST" novalidate>
     <input type="hidden" name="_subject" value="New investment inquiry — QS Growth Management site">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-    <div class="form-row">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
+
+    <div class="typeform-progress"><div class="typeform-progress-bar" id="tf-progress"></div></div>
+
+    <div class="typeform-step is-active" data-step="0">
+      <div class="typeform-num">1 / 4</div>
+      <label class="typeform-question" for="tf-name">What's your full name?</label>
+      <input class="typeform-input" type="text" id="tf-name" name="name" autocomplete="name" required>
+      <p class="typeform-error"></p>
+      <div class="typeform-nav">
+        <button type="button" class="typeform-btn" data-next>OK</button>
+        <span class="typeform-return-hint">press Enter ↵</span>
+      </div>
     </div>
-    <div class="form-row">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+
+    <div class="typeform-step" data-step="1">
+      <div class="typeform-num">2 / 4</div>
+      <label class="typeform-question" for="tf-email">Where can Kevin reach you?</label>
+      <input class="typeform-input" type="email" id="tf-email" name="email" autocomplete="email" required>
+      <p class="typeform-error"></p>
+      <div class="typeform-nav">
+        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
+        <button type="button" class="typeform-btn" data-next>OK</button>
+        <span class="typeform-return-hint">press Enter ↵</span>
+      </div>
     </div>
-    <div class="form-row">
-      <label for="company">Company (optional)</label>
-      <input type="text" id="company" name="company">
+
+    <div class="typeform-step" data-step="2">
+      <div class="typeform-num">3 / 4</div>
+      <label class="typeform-question" for="tf-company">And your company? <span class="optional">(optional)</span></label>
+      <input class="typeform-input" type="text" id="tf-company" name="company" autocomplete="organization">
+      <p class="typeform-error"></p>
+      <div class="typeform-nav">
+        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
+        <button type="button" class="typeform-btn" data-next>OK</button>
+        <span class="typeform-return-hint">press Enter ↵</span>
+      </div>
     </div>
-    <div class="form-row">
-      <label for="message">Tell us about your investment interest</label>
-      <textarea id="message" name="message" required></textarea>
+
+    <div class="typeform-step" data-step="3">
+      <div class="typeform-num">4 / 4</div>
+      <label class="typeform-question" for="tf-message">Tell us about your investment interest.</label>
+      <textarea class="typeform-input" id="tf-message" name="message" required></textarea>
+      <p class="typeform-error"></p>
+      <div class="typeform-nav">
+        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
+        <button type="button" class="typeform-btn" data-next>Review</button>
+        <span class="typeform-return-hint">press Enter ↵</span>
+      </div>
     </div>
-    <button type="submit" class="form-submit">Submit Inquiry</button>
-    <p class="form-note">Your information is kept confidential and used only to respond to your inquiry.</p>
+
+    <div class="typeform-step" data-step="4">
+      <div class="typeform-num">Review</div>
+      <div class="typeform-question">Everything look right?</div>
+      <dl class="typeform-review-list">
+        <div class="typeform-review-row">
+          <dt>Name</dt>
+          <dd data-review="name"></dd>
+        </div>
+        <div class="typeform-review-row">
+          <dt>Email</dt>
+          <dd data-review="email"></dd>
+        </div>
+        <div class="typeform-review-row">
+          <dt>Company</dt>
+          <dd data-review="company"></dd>
+        </div>
+        <div class="typeform-review-row">
+          <dt>Message</dt>
+          <dd data-review="message"></dd>
+        </div>
+      </dl>
+      <div class="typeform-nav">
+        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
+        <button type="submit" class="typeform-btn" id="tf-submit">Submit Inquiry</button>
+      </div>
+      <p class="form-note">Your information is kept confidential and used only to respond to your inquiry.</p>
+    </div>
+
+    <div class="typeform-done" id="tf-done">
+      <div class="typeform-done-mark">Sent ✓</div>
+      <div class="typeform-question">Thanks — your inquiry is in.</div>
+      <p class="typeform-hint">Kevin will follow up directly at the email you gave us.</p>
+    </div>
   </form>
   <div class="form-status" hidden></div>
 </section>
 
 <script>
 (function () {
-  var form = document.querySelector('.contact-form');
+  var form = document.getElementById('contact-typeform');
   var status = document.querySelector('.form-status');
   if (!form || !status) return;
+
+  var steps = Array.prototype.slice.call(form.querySelectorAll('.typeform-step'));
+  var progressBar = document.getElementById('tf-progress');
+  var doneEl = document.getElementById('tf-done');
+  var current = 0;
   var SHEET_LOG_URL = 'https://script.google.com/macros/s/AKfycbyNdCX7isOYL25-EZB2tY06npCvX4Sz2L3K-bPcxA4xD8C9vUotLz6Mcj2YB109ZtnqGw/exec';
+
+  function fieldFor(step) {
+    return step.querySelector('input, textarea');
+  }
+
+  function showStep(index) {
+    steps.forEach(function (s, i) { s.classList.toggle('is-active', i === index); });
+    progressBar.style.width = (index / (steps.length - 1) * 100) + '%';
+    current = index;
+    if (index === steps.length - 1) {
+      populateReview();
+    } else {
+      var f = fieldFor(steps[index]);
+      if (f) setTimeout(function () { f.focus(); }, 50);
+    }
+  }
+
+  function validateStep(step) {
+    var field = fieldFor(step);
+    var errorEl = step.querySelector('.typeform-error');
+    if (!field || !field.hasAttribute('required')) { errorEl.textContent = ''; return true; }
+    if (!field.value.trim()) {
+      errorEl.textContent = 'This one\'s required.';
+      field.focus();
+      return false;
+    }
+    if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+      errorEl.textContent = 'That doesn\'t look like a valid email.';
+      field.focus();
+      return false;
+    }
+    errorEl.textContent = '';
+    return true;
+  }
+
+  function populateReview() {
+    ['name', 'email', 'company', 'message'].forEach(function (key) {
+      var input = form.querySelector('[name="' + key + '"]');
+      var dd = form.querySelector('[data-review="' + key + '"]');
+      dd.textContent = (input.value || '').trim() || '—';
+    });
+  }
+
+  form.addEventListener('click', function (e) {
+    if (e.target.closest('[data-next]')) {
+      if (validateStep(steps[current])) showStep(current + 1);
+    } else if (e.target.closest('[data-back]')) {
+      showStep(current - 1);
+    }
+  });
+
+  form.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') return;
+    var step = steps[current];
+    if (!step) return;
+    if (e.target.tagName === 'TEXTAREA' && !(e.metaKey || e.ctrlKey)) return;
+    e.preventDefault();
+    if (current === steps.length - 1) {
+      form.requestSubmit();
+    } else if (validateStep(step)) {
+      showStep(current + 1);
+    }
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var submitBtn = form.querySelector('.form-submit');
+    if (!validateStep(steps[3])) { showStep(3); return; }
+    var submitBtn = document.getElementById('tf-submit');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
@@ -88,9 +223,8 @@
       headers: { 'Accept': 'application/json' }
     }).then(function (res) {
       if (res.ok) {
-        form.hidden = true;
-        status.hidden = false;
-        status.textContent = "Thanks — your inquiry has been sent. Kevin will follow up directly.";
+        steps.forEach(function (s) { s.classList.remove('is-active'); });
+        doneEl.classList.add('is-active');
       } else {
         throw new Error('Submission failed');
       }
@@ -102,6 +236,8 @@
       status.textContent = "Something went wrong sending your message. Please email thekevinquin@gmail.com directly.";
     });
   });
+
+  showStep(0);
 })();
 </script>
 
