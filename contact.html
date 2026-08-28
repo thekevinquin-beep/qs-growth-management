@@ -49,44 +49,45 @@
     <div class="typeform-progress"><div class="typeform-progress-bar" id="tf-progress"></div></div>
 
     <div class="typeform-step is-active" data-step="0">
-      <div class="typeform-num">1 / 4</div>
-      <label class="typeform-question" for="tf-name">What's your full name?</label>
-      <input class="typeform-input" type="text" id="tf-name" name="name" autocomplete="name" required>
+      <div class="typeform-num">01</div>
+      <label class="typeform-question" for="tf-name">Let's start with you.</label>
+      <div class="typeform-field">
+        <input class="typeform-input" type="text" id="tf-name" name="name" autocomplete="name" placeholder="Full name" required>
+        <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="typeform-field">
+        <input class="typeform-input" type="email" id="tf-email" name="email" autocomplete="email" placeholder="Email address" required>
+        <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
       <p class="typeform-error"></p>
       <div class="typeform-nav">
-        <button type="button" class="typeform-btn" data-next>OK</button>
+        <button type="button" class="typeform-btn" data-next>Continue</button>
         <span class="typeform-return-hint">press Enter ↵</span>
       </div>
     </div>
 
     <div class="typeform-step" data-step="1">
-      <div class="typeform-num">2 / 4</div>
-      <label class="typeform-question" for="tf-email">Where can Kevin reach you?</label>
-      <input class="typeform-input" type="email" id="tf-email" name="email" autocomplete="email" required>
+      <div class="typeform-num">02</div>
+      <label class="typeform-question" for="tf-company">And your company? <span class="optional">(optional)</span></label>
+      <div class="typeform-field">
+        <input class="typeform-input" type="text" id="tf-company" name="company" autocomplete="organization" placeholder="Company name">
+        <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
       <p class="typeform-error"></p>
       <div class="typeform-nav">
         <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
-        <button type="button" class="typeform-btn" data-next>OK</button>
+        <button type="button" class="typeform-btn" data-next>Continue</button>
         <span class="typeform-return-hint">press Enter ↵</span>
       </div>
     </div>
 
     <div class="typeform-step" data-step="2">
-      <div class="typeform-num">3 / 4</div>
-      <label class="typeform-question" for="tf-company">And your company? <span class="optional">(optional)</span></label>
-      <input class="typeform-input" type="text" id="tf-company" name="company" autocomplete="organization">
-      <p class="typeform-error"></p>
-      <div class="typeform-nav">
-        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
-        <button type="button" class="typeform-btn" data-next>OK</button>
-        <span class="typeform-return-hint">press Enter ↵</span>
-      </div>
-    </div>
-
-    <div class="typeform-step" data-step="3">
-      <div class="typeform-num">4 / 4</div>
+      <div class="typeform-num">03</div>
       <label class="typeform-question" for="tf-message">Tell us about your investment interest.</label>
-      <textarea class="typeform-input" id="tf-message" name="message" required></textarea>
+      <div class="typeform-field">
+        <textarea class="typeform-input" id="tf-message" name="message" required></textarea>
+        <svg class="typeform-check typeform-check-area" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
       <p class="typeform-error"></p>
       <div class="typeform-nav">
         <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
@@ -95,7 +96,7 @@
       </div>
     </div>
 
-    <div class="typeform-step" data-step="4">
+    <div class="typeform-step" data-step="3">
       <div class="typeform-num">Review</div>
       <div class="typeform-question">Everything look right?</div>
       <dl class="typeform-review-list">
@@ -124,7 +125,7 @@
     </div>
 
     <div class="typeform-done" id="tf-done">
-      <div class="typeform-done-mark">Sent ✓</div>
+      <div class="typeform-done-mark">Sent</div>
       <div class="typeform-question">Thanks — your inquiry is in.</div>
       <p class="typeform-hint">Kevin will follow up directly at the email you gave us.</p>
     </div>
@@ -144,35 +145,53 @@
   var current = 0;
   var SHEET_LOG_URL = 'https://script.google.com/macros/s/AKfycbyNdCX7isOYL25-EZB2tY06npCvX4Sz2L3K-bPcxA4xD8C9vUotLz6Mcj2YB109ZtnqGw/exec';
 
-  function fieldFor(step) {
-    return step.querySelector('input, textarea');
+  function fieldsFor(step) {
+    return Array.prototype.slice.call(step.querySelectorAll('input, textarea'));
   }
+
+  function updateCheck(field) {
+    var wrap = field.closest('.typeform-field');
+    if (!wrap) return;
+    var valid = field.hasAttribute('required')
+      ? (field.type === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim()) : !!field.value.trim())
+      : !!field.value.trim();
+    wrap.classList.toggle('is-valid', valid);
+  }
+
+  form.addEventListener('input', function (e) {
+    if (e.target.matches('input, textarea')) updateCheck(e.target);
+  });
 
   function showStep(index) {
     steps.forEach(function (s, i) { s.classList.toggle('is-active', i === index); });
+    form.className = 'typeform tf-tint-' + index;
     progressBar.style.width = (index / (steps.length - 1) * 100) + '%';
     current = index;
     if (index === steps.length - 1) {
       populateReview();
     } else {
-      var f = fieldFor(steps[index]);
+      fieldsFor(steps[index]).forEach(updateCheck);
+      var f = fieldsFor(steps[index])[0];
       if (f) setTimeout(function () { f.focus(); }, 50);
     }
   }
 
   function validateStep(step) {
-    var field = fieldFor(step);
+    var fields = fieldsFor(step);
     var errorEl = step.querySelector('.typeform-error');
-    if (!field || !field.hasAttribute('required')) { errorEl.textContent = ''; return true; }
-    if (!field.value.trim()) {
-      errorEl.textContent = 'This one\'s required.';
-      field.focus();
-      return false;
-    }
-    if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-      errorEl.textContent = 'That doesn\'t look like a valid email.';
-      field.focus();
-      return false;
+    for (var i = 0; i < fields.length; i++) {
+      var field = fields[i];
+      if (!field.hasAttribute('required')) continue;
+      if (!field.value.trim()) {
+        errorEl.textContent = 'This one\'s required.';
+        field.focus();
+        return false;
+      }
+      if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+        errorEl.textContent = 'That doesn\'t look like a valid email.';
+        field.focus();
+        return false;
+      }
     }
     errorEl.textContent = '';
     return true;
@@ -209,7 +228,7 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (!validateStep(steps[3])) { showStep(3); return; }
+    if (!validateStep(steps[2])) { showStep(2); return; }
     var submitBtn = document.getElementById('tf-submit');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
