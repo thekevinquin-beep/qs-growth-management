@@ -35,103 +35,106 @@
   </div>
 </nav>
 
-<header class="hero" style="padding-bottom:24px;">
-  <div class="eyebrow">Contact</div>
-  <h1 style="font-style:normal;font-weight:500;">Direct access to the operator.</h1>
-  <p class="hero-sub">No investor-relations team, no intermediaries — inquiries go straight to Kevin. Tell us a bit about what you're looking for and we'll follow up.</p>
-</header>
-
-<section class="section" style="border-top:2px solid var(--rule-strong);">
-  <form class="typeform" id="contact-typeform" action="https://formspree.io/f/mnpaegnq" method="POST" novalidate>
-    <input type="hidden" name="_subject" value="New investment inquiry — QS Growth Management site">
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
-    <div class="typeform-progress"><div class="typeform-progress-bar" id="tf-progress"></div></div>
-
-    <div class="typeform-step is-active" data-step="0">
-      <div class="typeform-num">01</div>
-      <label class="typeform-question" for="tf-name">Let's start with you.</label>
-      <div class="typeform-field">
-        <input class="typeform-input" type="text" id="tf-name" name="name" autocomplete="name" placeholder="Full name" required>
-        <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="typeform-field">
-        <input class="typeform-input" type="email" id="tf-email" name="email" autocomplete="email" placeholder="Email address" required>
-        <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <p class="typeform-error"></p>
-      <div class="typeform-nav">
-        <button type="button" class="typeform-btn" data-next>Continue</button>
-        <span class="typeform-return-hint">press Enter ↵</span>
-      </div>
+<main class="contact-stage">
+  <div class="contact-card">
+    <div class="contact-card-head">
+      <div class="eyebrow">Contact</div>
+      <h1>Direct access to the operator.</h1>
     </div>
 
-    <div class="typeform-step" data-step="1">
-      <div class="typeform-num">02</div>
-      <label class="typeform-question" for="tf-company">And your company? <span class="optional">(optional)</span></label>
-      <div class="typeform-field">
-        <input class="typeform-input" type="text" id="tf-company" name="company" autocomplete="organization" placeholder="Company name">
-        <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <p class="typeform-error"></p>
-      <div class="typeform-nav">
-        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
-        <button type="button" class="typeform-btn" data-next>Continue</button>
-        <span class="typeform-return-hint">press Enter ↵</span>
-      </div>
-    </div>
+    <form class="typeform" id="contact-typeform" action="https://formspree.io/f/mnpaegnq" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New investment inquiry — QS Growth Management site">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="typeform-step" data-step="2">
-      <div class="typeform-num">03</div>
-      <label class="typeform-question" for="tf-message">Tell me about your investment interest or inquiry.</label>
-      <div class="typeform-field">
-        <textarea class="typeform-input" id="tf-message" name="message" required></textarea>
-        <svg class="typeform-check typeform-check-area" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <p class="typeform-error"></p>
-      <div class="typeform-nav">
-        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
-        <button type="button" class="typeform-btn" data-next>Review</button>
-        <span class="typeform-return-hint">press Enter ↵</span>
-      </div>
-    </div>
+      <div class="typeform-progress"><div class="typeform-progress-bar" id="tf-progress"></div></div>
 
-    <div class="typeform-step" data-step="3">
-      <div class="typeform-num">Review</div>
-      <div class="typeform-question">Everything look right?</div>
-      <dl class="typeform-review-list">
-        <div class="typeform-review-row">
-          <dt>Name</dt>
-          <dd data-review="name"></dd>
+      <div class="typeform-body" id="tf-body">
+      <div class="typeform-step is-active" data-step="0">
+        <div class="typeform-num">01</div>
+        <label class="typeform-question" for="tf-name">Let's start with you.</label>
+        <div class="typeform-field">
+          <input class="typeform-input" type="text" id="tf-name" name="name" autocomplete="name" placeholder="Full name" required>
+          <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="typeform-review-row">
-          <dt>Email</dt>
-          <dd data-review="email"></dd>
+        <div class="typeform-field">
+          <input class="typeform-input" type="email" id="tf-email" name="email" autocomplete="email" placeholder="Email address" required>
+          <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="typeform-review-row">
-          <dt>Company</dt>
-          <dd data-review="company"></dd>
+        <p class="typeform-error"></p>
+        <div class="typeform-nav">
+          <button type="button" class="typeform-btn" data-next>Continue</button>
+          <span class="typeform-return-hint">press Enter ↵</span>
         </div>
-        <div class="typeform-review-row">
-          <dt>Message</dt>
-          <dd data-review="message"></dd>
-        </div>
-      </dl>
-      <div class="typeform-nav">
-        <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
-        <button type="submit" class="typeform-btn" id="tf-submit">Submit Inquiry</button>
       </div>
-      <p class="form-note">Your information is kept confidential and used only to respond to your inquiry.</p>
-    </div>
 
-    <div class="typeform-done" id="tf-done">
-      <div class="typeform-done-mark">Sent</div>
-      <div class="typeform-question">Thanks — your inquiry is in.</div>
-      <p class="typeform-hint">Kevin will follow up directly at the email you gave us.</p>
-    </div>
-  </form>
-  <div class="form-status" hidden></div>
-</section>
+      <div class="typeform-step" data-step="1">
+        <div class="typeform-num">02</div>
+        <label class="typeform-question" for="tf-company">And your company? <span class="optional">(optional)</span></label>
+        <div class="typeform-field">
+          <input class="typeform-input" type="text" id="tf-company" name="company" autocomplete="organization" placeholder="Company name">
+          <svg class="typeform-check" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="typeform-error"></p>
+        <div class="typeform-nav">
+          <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
+          <button type="button" class="typeform-btn" data-next>Continue</button>
+          <span class="typeform-return-hint">press Enter ↵</span>
+        </div>
+      </div>
+
+      <div class="typeform-step" data-step="2">
+        <div class="typeform-num">03</div>
+        <label class="typeform-question" for="tf-message">Tell me about your investment interest or inquiry.</label>
+        <div class="typeform-field">
+          <textarea class="typeform-input" id="tf-message" name="message" required></textarea>
+          <svg class="typeform-check typeform-check-area" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="typeform-error"></p>
+        <div class="typeform-nav">
+          <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
+          <button type="button" class="typeform-btn" data-next>Review</button>
+          <span class="typeform-return-hint">press Enter ↵</span>
+        </div>
+      </div>
+
+      <div class="typeform-step" data-step="3">
+        <div class="typeform-num">Review</div>
+        <div class="typeform-question">Everything look right?</div>
+        <dl class="typeform-review-list">
+          <div class="typeform-review-row">
+            <dt>Name</dt>
+            <dd data-review="name"></dd>
+          </div>
+          <div class="typeform-review-row">
+            <dt>Email</dt>
+            <dd data-review="email"></dd>
+          </div>
+          <div class="typeform-review-row">
+            <dt>Company</dt>
+            <dd data-review="company"></dd>
+          </div>
+          <div class="typeform-review-row">
+            <dt>Message</dt>
+            <dd data-review="message"></dd>
+          </div>
+        </dl>
+        <div class="typeform-nav">
+          <button type="button" class="typeform-btn-ghost typeform-btn" data-back>Back</button>
+          <button type="submit" class="typeform-btn" id="tf-submit">Submit Inquiry</button>
+        </div>
+        <p class="form-note">Your information is kept confidential and used only to respond to your inquiry.</p>
+      </div>
+
+      <div class="typeform-done" id="tf-done">
+        <div class="typeform-done-mark">Sent</div>
+        <div class="typeform-question">Thanks — your inquiry is in.</div>
+        <p class="typeform-hint">Kevin will follow up directly at the email you gave us.</p>
+      </div>
+      </div>
+    </form>
+    <div class="form-status" hidden></div>
+  </div>
+</main>
 
 <script>
 (function () {
@@ -142,8 +145,22 @@
   var steps = Array.prototype.slice.call(form.querySelectorAll('.typeform-step'));
   var progressBar = document.getElementById('tf-progress');
   var doneEl = document.getElementById('tf-done');
+  var body = document.getElementById('tf-body');
   var current = 0;
   var SHEET_LOG_URL = 'https://script.google.com/macros/s/AKfycbyNdCX7isOYL25-EZB2tY06npCvX4Sz2L3K-bPcxA4xD8C9vUotLz6Mcj2YB109ZtnqGw/exec';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function animateBodyHeight(callback) {
+    if (!body || reduceMotion) { callback(); return; }
+    var startH = body.offsetHeight;
+    body.style.height = startH + 'px';
+    callback();
+    var endH = body.scrollHeight;
+    requestAnimationFrame(function () {
+      body.style.height = endH + 'px';
+    });
+    setTimeout(function () { body.style.height = 'auto'; }, 360);
+  }
 
   function fieldsFor(step) {
     return Array.prototype.slice.call(step.querySelectorAll('input, textarea'));
@@ -163,17 +180,19 @@
   });
 
   function showStep(index) {
-    steps.forEach(function (s, i) { s.classList.toggle('is-active', i === index); });
-    form.className = 'typeform tf-tint-' + index;
-    progressBar.style.width = (index / (steps.length - 1) * 100) + '%';
-    current = index;
-    if (index === steps.length - 1) {
-      populateReview();
-    } else {
-      fieldsFor(steps[index]).forEach(updateCheck);
-      var f = fieldsFor(steps[index])[0];
-      if (f) setTimeout(function () { f.focus(); }, 50);
-    }
+    animateBodyHeight(function () {
+      steps.forEach(function (s, i) { s.classList.toggle('is-active', i === index); });
+      form.className = 'typeform tf-tint-' + index;
+      progressBar.style.width = (index / (steps.length - 1) * 100) + '%';
+      current = index;
+      if (index === steps.length - 1) {
+        populateReview();
+      } else {
+        fieldsFor(steps[index]).forEach(updateCheck);
+        var f = fieldsFor(steps[index])[0];
+        if (f) setTimeout(function () { f.focus(); }, 50);
+      }
+    });
   }
 
   function validateStep(step) {
@@ -242,8 +261,10 @@
       headers: { 'Accept': 'application/json' }
     }).then(function (res) {
       if (res.ok) {
-        steps.forEach(function (s) { s.classList.remove('is-active'); });
-        doneEl.classList.add('is-active');
+        animateBodyHeight(function () {
+          steps.forEach(function (s) { s.classList.remove('is-active'); });
+          doneEl.classList.add('is-active');
+        });
       } else {
         throw new Error('Submission failed');
       }
@@ -260,18 +281,19 @@
 })();
 </script>
 
-<footer class="site-footer">
-  <div class="footer-row">
-    <div class="footer-logo">QS GROWTH MANAGEMENT</div>
-    <ul class="footer-links">
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="thesis.html">Thesis</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-  <div class="footer-legal">© 2026 QS Growth Management. Edmonton, Alberta. This site is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security.</div>
-</footer>
+<script>
+(function () {
+  function setStageOffset() {
+    var banner = document.querySelector('.draft-banner');
+    var nav = document.querySelector('.site-nav');
+    var offset = (banner ? banner.offsetHeight : 0) + (nav ? nav.offsetHeight : 0);
+    document.documentElement.style.setProperty('--stage-offset', offset + 'px');
+  }
+  setStageOffset();
+  window.addEventListener('resize', setStageOffset);
+  window.addEventListener('orientationchange', setStageOffset);
+})();
+</script>
 
 <script src="assets/js/nav.js"></script>
 </body>
