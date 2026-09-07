@@ -68,13 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startCycle();
   }
-  var revealTargets = [].slice.call(document.querySelectorAll('.section, .deal-card')).filter(function (el) {
-    return !el.closest('#deal-details');
-  });
+  var revealTargets = [].slice.call(document.querySelectorAll(
+    '.section, .band-inner, .about-intro, .stagger > *, .num-list li, .timeline li, .fieldnote'
+  ));
   var headingTargets = [].slice.call(document.querySelectorAll(
-    'h1, h2, .section-title, .property-hero-title, .hero-sub, .property-hero-loc, .property-back'
+    'h2, .section-title'
   )).filter(function (el) {
-    return !el.closest('#deal-details') && !el.closest('header') && !el.closest('.property-hero');
+    return !el.closest('header') && !el.closest('.property-hero') && !el.closest('.contact-stage');
   });
 
   if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -92,16 +92,18 @@ document.addEventListener('DOMContentLoaded', function () {
       observer.observe(el);
     });
     headingTargets.forEach(function (el) {
-      var isHeading = el.tagName === 'H1' || el.tagName === 'H2' || el.classList.contains('section-title') || el.classList.contains('property-hero-title');
-      el.classList.add(isHeading ? 'reveal-heading' : 'reveal');
+      el.classList.add('reveal-heading');
       observer.observe(el);
     });
   }
 
   var countTargets = [].slice.call(document.querySelectorAll(
-    '.deal-cell-val, .proof-num, .track-card-units, .track-card-stat'
+    '.deal-cell-val, .proof-num, .market-stat-num, .track-card-row dd, .data-table td.num'
   )).filter(function (el) {
-    return !el.closest('#deal-details') && /\d/.test(el.textContent);
+    if (el.getAttribute('data-count') === 'false') return false;
+    var text = el.textContent.trim();
+    // Skip anything that isn't a plain number or currency figure (dates, ranges, labels).
+    return /^\$?~?[\d,]+(?:\.\d+)?[KM%]?$/.test(text.replace(/^~/, ''));
   });
 
   if (countTargets.length) {
@@ -114,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
       var suffix = match[3];
       var target = parseFloat(numStr);
       if (isNaN(target)) return;
-      if (prefix.trim() && prefix.trim() !== '$') return;
       var hasCommas = match[2].indexOf(',') !== -1;
       var decimals = (numStr.split('.')[1] || '').length;
 

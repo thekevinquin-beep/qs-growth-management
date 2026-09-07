@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | QS Growth Management</title>
 <meta name="description" content="Get in touch with QS Growth Management about investment or partnership opportunities in multifamily real estate.">
-<link rel="canonical" href="https://qsgrowthmanagement.com/contact.html">
+<link rel="canonical" href="https://qsgrowth.co/contact.html">
+<meta name="theme-color" content="#F5F6F4">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact | QS Growth Management">
+<meta property="og:description" content="Direct access to the operator. Inquiries go straight to Kevin Quintero-Saakan.">
+<meta property="og:url" content="https://qsgrowth.co/contact.html">
+<meta property="og:image" content="https://qsgrowth.co/assets/images/deals/westlynn.jpg">
 <link rel="icon" href="assets/images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +42,16 @@
 </nav>
 
 <main class="contact-stage">
+  <aside class="contact-aside">
+    <div class="eyebrow">Contact</div>
+    <h2>One inbox. No intermediaries.</h2>
+    <p>Investors, building owners, and brokers all reach the same person. Expect a real reply, usually within a business day.</p>
+    <dl>
+      <div class="row"><dt>Email</dt><dd><a href="mailto:kevin@qsgrowth.co">kevin@qsgrowth.co</a></dd></div>
+      <div class="row"><dt>Based in</dt><dd>Edmonton, Alberta</dd></div>
+      <div class="row"><dt>Focus</dt><dd>Multifamily, 15–50 units · Edmonton &amp; Saskatoon</dd></div>
+    </dl>
+  </aside>
   <div class="contact-card">
     <div class="contact-card-head">
       <div class="eyebrow">Contact</div>
@@ -128,7 +144,7 @@
       <div class="typeform-done" id="tf-done">
         <div class="typeform-done-mark">Sent</div>
         <div class="typeform-question">Thanks — your inquiry is in.</div>
-        <p class="typeform-hint">Kevin will follow up directly at the email you gave us.</p>
+        <p class="typeform-hint">Kevin will follow up directly at the email you gave us — usually within a business day.</p>
       </div>
       </div>
     </form>
@@ -273,7 +289,7 @@
       submitBtn.textContent = 'Submit Inquiry';
       status.hidden = false;
       status.classList.add('is-error');
-      status.textContent = "Something went wrong sending your message. Please email thekevinquin@gmail.com directly.";
+      status.innerHTML = 'Something went wrong sending your message. Please email <a href="mailto:kevin@qsgrowth.co">kevin@qsgrowth.co</a> directly.';
     });
   });
 

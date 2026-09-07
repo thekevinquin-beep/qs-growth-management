@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://qsgrowthmanagement.com/sitemap.xml
+Sitemap: https://qsgrowth.co/sitemap.xml
