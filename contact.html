@@ -20,7 +20,6 @@
 </head>
 <body>
 
-<div class="draft-banner">DRAFT / PROOF-OF-CONCEPT — NOT APPROVED FOR PUBLIC OR CLIENT-FACING USE</div>
 
 <nav class="site-nav">
   <a class="nav-logo" href="/">
@@ -300,9 +299,8 @@
 <script>
 (function () {
   function setStageOffset() {
-    var banner = document.querySelector('.draft-banner');
     var nav = document.querySelector('.site-nav');
-    var offset = (banner ? banner.offsetHeight : 0) + (nav ? nav.offsetHeight : 0);
+    var offset = nav ? nav.offsetHeight : 0;
     document.documentElement.style.setProperty('--stage-offset', offset + 'px');
   }
   setStageOffset();
