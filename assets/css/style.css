@@ -131,7 +131,7 @@ strong { font-weight: 600; }
   text-decoration: none;
   color: var(--ink);
 }
-.nav-logo img { height: 44px; width: auto; }
+.nav-logo img { width: 78px; height: auto; }
 .nav-logo span {
   font-family: var(--font-mono);
   font-size: 12.5px;
@@ -1162,7 +1162,7 @@ textarea.typeform-input { resize: vertical; min-height: 70px; font-size: 15px; l
   margin-bottom: 48px;
 }
 .footer-brand { display: flex; flex-direction: column; gap: 16px; }
-.footer-brand img { height: 84px; width: auto; margin-left: -8px; }
+.footer-brand img { width: 150px; height: auto; margin-left: -8px; }
 .footer-logo { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink); }
 .footer-tag { font-family: var(--font-display); font-size: 18px; line-height: 1.4; color: var(--ink-dim); max-width: 30ch; font-style: italic; }
 .footer-col h4 { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); font-weight: 400; margin-bottom: 16px; }
