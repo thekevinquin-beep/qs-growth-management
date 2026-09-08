@@ -2,9 +2,23 @@ document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.querySelector('.nav-toggle');
   var links = document.querySelector('.nav-links');
   if (toggle && links) {
-    toggle.addEventListener('click', function () {
-      var open = links.classList.toggle('open');
+    var setMenu = function (open) {
+      links.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    toggle.addEventListener('click', function () {
+      setMenu(!links.classList.contains('open'));
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        setMenu(false);
+        toggle.focus();
+      }
+    });
+    // Widening past the mobile breakpoint reveals the links again; don't leave
+    // the toggle claiming an expanded menu that no longer exists.
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 720) setMenu(false);
     });
   }
 
@@ -25,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var dots = document.querySelectorAll('.hero-dot');
     var current = 0;
     var timer = null;
+    var captionTimer = null;
 
     var show = function (index) {
       heroImages[current].classList.remove('is-active');
@@ -33,8 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
       heroImages[current].classList.add('is-active');
       if (dots[current]) dots[current].classList.add('is-active');
       if (captionEl) {
+        // Drop any pending swap so rapid dot clicks can't restore a stale caption.
+        clearTimeout(captionTimer);
         captionEl.classList.remove('is-active');
-        setTimeout(function () {
+        captionTimer = setTimeout(function () {
           captionEl.textContent = heroImages[current].dataset.caption || '';
           captionEl.classList.add('is-active');
         }, 180);
@@ -60,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) {
         stopCycle();
-      } else if (captionEl) {
-        captionEl.classList.add('is-active');
+      } else {
+        if (captionEl) captionEl.classList.add('is-active');
         startCycle();
       }
     });

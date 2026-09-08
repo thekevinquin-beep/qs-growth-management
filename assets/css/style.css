@@ -66,6 +66,23 @@ img { max-width: 100%; display: block; }
 a { color: inherit; }
 strong { font-weight: 600; }
 
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--rule-strong);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 12px; }
+
 .wrap {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -606,7 +623,7 @@ h1 em, .section-title em, .thesis-statement em { font-style: italic; color: var(
 /* ---------- Portfolio summary table ---------- */
 .table-wrap { overflow-x: auto; border-top: 1px solid var(--rule-strong); }
 .data-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
-.data-table th {
+.data-table thead th {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.1em;
@@ -617,12 +634,21 @@ h1 em, .section-title em, .thesis-statement em { font-style: italic; color: var(
   padding: 14px 16px 12px 0;
   border-bottom: 1px solid var(--rule);
 }
-.data-table td { padding: 18px 16px 18px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.data-table td,
+.data-table tbody th,
+.data-table tfoot th {
+  padding: 18px 16px 18px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  text-align: left;
+  font-weight: 400;
+}
 .data-table td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
-.data-table td.name { font-family: var(--font-display); font-size: 18px; font-weight: 500; }
+.data-table .name { font-family: var(--font-display); font-size: 18px; font-weight: 500; }
 .data-table a { text-decoration: none; }
 .data-table a:hover { color: var(--accent); }
-.data-table tfoot td { border-bottom: none; font-family: var(--font-mono); font-size: 13px; color: var(--ink-dim); padding-top: 16px; }
+.data-table tfoot td,
+.data-table tfoot th { border-bottom: none; font-family: var(--font-mono); font-size: 13px; color: var(--ink-dim); padding-top: 16px; }
 .data-table tfoot td.num { color: var(--ink); }
 .status-pill {
   display: inline-block;
@@ -1001,7 +1027,8 @@ h1 em, .section-title em, .thesis-statement em { font-style: italic; color: var(
   justify-self: end;
 }
 .contact-aside .eyebrow { margin-bottom: 0; }
-.contact-aside h2 { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+.contact-aside h2,
+.contact-aside .contact-aside-title { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
 .contact-aside p { font-size: 14px; color: var(--ink-dim); line-height: 1.7; }
 .contact-aside dl { border-top: 1px solid var(--rule); }
 .contact-aside .row { display: flex; flex-direction: column; gap: 3px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
@@ -1193,3 +1220,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+
+/* ---------- 404 ---------- */
+a.market {
+  text-decoration: none;
+  color: inherit;
+  gap: 16px;
+  transition: border-color 0.25s ease, transform 0.25s var(--ease);
+}
+a.market:hover { border-color: var(--accent); transform: translateY(-2px); }
+a.market:hover .market-name { color: var(--accent); }
+a.market .market-name { transition: color 0.2s ease; }

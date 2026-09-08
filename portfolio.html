@@ -12,25 +12,34 @@
 <meta property="og:description" content="Three multifamily properties across Edmonton and Saskatoon, each documented with role, scope, and performance.">
 <meta property="og:url" content="https://qsgrowth.co/portfolio.html">
 <meta property="og:image" content="https://qsgrowth.co/assets/images/deals/dakota.jpg">
+<meta property="og:image:alt" content="QS Growth Management — multifamily investment and asset management">
+<meta property="og:site_name" content="QS Growth Management">
+<meta property="og:locale" content="en_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio | QS Growth Management">
+<meta name="twitter:description" content="Three multifamily properties across Edmonton and Saskatoon, each documented with role, scope, and performance.">
+<meta name="twitter:image" content="https://qsgrowth.co/assets/images/deals/dakota.jpg">
 <link rel="icon" href="assets/images/logo.png">
+<link rel="apple-touch-icon" href="assets/images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 
 <nav class="site-nav">
   <a class="nav-logo" href="/">
-    <img src="assets/images/logo.png" alt="QS Growth Management logo">
+    <img src="assets/images/logo.png" alt="QS Growth Management logo" width="668" height="374" decoding="async">
     <span>QS GROWTH MANAGEMENT</span>
   </a>
-  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-right">
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
       <li><a href="thesis.html">Thesis</a></li>
       <li><a href="about.html">About</a></li>
@@ -39,6 +48,8 @@
     <a class="nav-cta-btn" href="contact.html">Get in Touch</a>
   </div>
 </nav>
+
+<main id="main">
 
 <header class="hero">
   <div class="hero-inner">
@@ -52,7 +63,7 @@
   <div class="track-grid stagger">
     <a class="track-card" href="westlynn.html" style="--i:0">
       <div class="track-card-media">
-        <img class="track-card-img" src="assets/images/deals/westlynn.jpg" alt="Aerial view of Westlynn apartments in Edmonton">
+        <img class="track-card-img" src="assets/images/deals/westlynn.jpg" alt="Aerial view of Westlynn apartments in Edmonton" width="1024" height="682" decoding="async" loading="lazy">
         <span class="track-card-tag">Equity + Operations</span>
       </div>
       <div class="track-card-name">Westlynn <span class="track-card-arrow">↗</span></div>
@@ -66,7 +77,7 @@
     </a>
     <a class="track-card" href="dakota.html" style="--i:1">
       <div class="track-card-media">
-        <img class="track-card-img" src="assets/images/deals/dakota.jpg" alt="Aerial view of Dakota apartments in Edmonton">
+        <img class="track-card-img" src="assets/images/deals/dakota.jpg" alt="Aerial view of Dakota apartments in Edmonton" width="1024" height="682" decoding="async" loading="lazy">
         <span class="track-card-tag">Asset Management</span>
       </div>
       <div class="track-card-name">Dakota <span class="track-card-arrow">↗</span></div>
@@ -80,7 +91,7 @@
     </a>
     <a class="track-card" href="mountroyal.html" style="--i:2">
       <div class="track-card-media">
-        <img class="track-card-img" src="assets/images/deals/mountroyal.jpg" alt="Mount Royal Apartments in Saskatoon in winter">
+        <img class="track-card-img" src="assets/images/deals/mountroyal.jpg" alt="Mount Royal Apartments in Saskatoon in winter" width="1024" height="683" decoding="async" loading="lazy">
         <span class="track-card-tag">Equity Partner</span>
       </div>
       <div class="track-card-name">Mount Royal Apartments <span class="track-card-arrow">↗</span></div>
@@ -109,17 +120,17 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th>Property</th>
-          <th>Market</th>
-          <th>Units</th>
-          <th>Role</th>
-          <th>Since</th>
-          <th>Status</th>
+          <th scope="col">Property</th>
+          <th scope="col">Market</th>
+          <th scope="col">Units</th>
+          <th scope="col">Role</th>
+          <th scope="col">Since</th>
+          <th scope="col">Status</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="name"><a href="westlynn.html">Westlynn</a></td>
+          <th scope="row" class="name"><a href="westlynn.html">Westlynn</a></th>
           <td>Edmonton, AB</td>
           <td class="num">21</td>
           <td>Equity partner &amp; asset manager</td>
@@ -127,7 +138,7 @@
           <td><span class="status-pill">Refinancing</span></td>
         </tr>
         <tr>
-          <td class="name"><a href="dakota.html">Dakota</a></td>
+          <th scope="row" class="name"><a href="dakota.html">Dakota</a></th>
           <td>Edmonton, AB</td>
           <td class="num">20</td>
           <td>Asset manager (third-party owner)</td>
@@ -135,7 +146,7 @@
           <td><span class="status-pill">Refinancing</span></td>
         </tr>
         <tr>
-          <td class="name"><a href="mountroyal.html">Mount Royal Apartments</a></td>
+          <th scope="row" class="name"><a href="mountroyal.html">Mount Royal Apartments</a></th>
           <td>Saskatoon, SK</td>
           <td class="num">18</td>
           <td>Equity partner</td>
@@ -145,7 +156,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td>Total</td>
+          <th scope="row">Total</th>
           <td>2 markets</td>
           <td class="num">59</td>
           <td colspan="3">41 units under direct management · $6.3M assets under management</td>
@@ -172,10 +183,12 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="assets/images/logo.png" alt="QS Growth Management">
+      <img src="assets/images/logo.png" alt="QS Growth Management" width="668" height="374" decoding="async" loading="lazy">
       <div class="footer-tag">Multifamily investment and asset management across Canada — operated by the person accountable for the outcome.</div>
     </div>
     <div class="footer-col">
