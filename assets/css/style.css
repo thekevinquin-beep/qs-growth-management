@@ -769,6 +769,7 @@ h1 em, .section-title em, .thesis-statement em { font-style: italic; color: var(
   object-fit: cover;
   object-position: top center;
   width: 100%;
+  height: auto;
   filter: saturate(0.96);
 }
 .operator-quote {
@@ -853,6 +854,7 @@ h1 em, .section-title em, .thesis-statement em { font-style: italic; color: var(
 .about-intro-media { position: sticky; top: 100px; }
 .about-photo {
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: top center;
