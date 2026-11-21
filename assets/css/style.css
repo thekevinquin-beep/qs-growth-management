@@ -1,22 +1,22 @@
 /* QS Growth Management — design tokens & shared styles
-   Palette: warm paper / charcoal ink / sage green accent (aligned to logo)
+   Palette: cool paper / navy ink / navy accent (aligned to logo)
    Type: Newsreader (display), Work Sans (body/UI), Space Mono (data/labels)
 */
 
 :root {
-  --bg: #F5F6F4;
-  --bg-2: #ECEFEB;
+  --bg: #F5F6F8;
+  --bg-2: #EBEEF2;
   --card: #FFFFFF;
-  --ink: #20262B;
-  --ink-deep: #171D1A;
-  --ink-dim: #66706B;
-  --ink-soft: #8B948F;
-  --accent: #5A7A5C;
-  --accent-bright: #86A488;
-  --accent-dim: #5A7A5C33;
-  --accent-faint: #5A7A5C14;
-  --rule: #DADFDB;
-  --rule-strong: #20262B;
+  --ink: #1B2636;
+  --ink-deep: #0D2A4F;
+  --ink-dim: #5C6B7D;
+  --ink-soft: #8B95A3;
+  --accent: #0D2A4F;
+  --accent-bright: #3D6FA8;
+  --accent-dim: #0D2A4F33;
+  --accent-faint: #0D2A4F14;
+  --rule: #D8DEE6;
+  --rule-strong: #1B2636;
   --danger: #B3423A;
 
   --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
@@ -26,8 +26,8 @@
   --max-width: 1120px;
   --measure: 62ch;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-nav: 0 1px 0 var(--rule), 0 12px 24px -20px rgba(32, 38, 43, 0.25);
-  --shadow-card: 0 30px 60px -36px rgba(23, 29, 26, 0.45);
+  --shadow-nav: 0 1px 0 var(--rule), 0 12px 24px -20px rgba(24, 34, 51, 0.25);
+  --shadow-card: 0 30px 60px -36px rgba(13, 42, 79, 0.45);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -148,7 +148,7 @@ strong { font-weight: 600; }
   text-decoration: none;
   color: var(--ink);
 }
-.nav-logo img { width: 78px; height: auto; }
+.nav-logo img { width: auto; height: 40px; }
 .nav-logo span {
   font-family: var(--font-mono);
   font-size: 12.5px;
@@ -799,7 +799,7 @@ h1 em, .section-title em, .thesis-statement em { font-style: italic; color: var(
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 700px 400px at 85% 20%, rgba(134,164,136,0.22), transparent 60%);
+  background: radial-gradient(ellipse 700px 400px at 85% 20%, rgba(61,111,168,0.22), transparent 60%);
   pointer-events: none;
 }
 .band-inner {
@@ -1191,7 +1191,7 @@ textarea.typeform-input { resize: vertical; min-height: 70px; font-size: 15px; l
   margin-bottom: 48px;
 }
 .footer-brand { display: flex; flex-direction: column; gap: 16px; }
-.footer-brand img { width: 150px; height: auto; margin-left: -8px; }
+.footer-brand img { width: auto; height: 64px; margin-left: 0; align-self: flex-start; }
 .footer-logo { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink); }
 .footer-tag { font-family: var(--font-display); font-size: 18px; line-height: 1.4; color: var(--ink-dim); max-width: 30ch; font-style: italic; }
 .footer-col h4 { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); font-weight: 400; margin-bottom: 16px; }
